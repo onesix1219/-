@@ -642,5 +642,14 @@ document.getElementById('schoolList').addEventListener('click',e=>{
   document.querySelectorAll('.school-pill').forEach(p=>p.classList.remove('active'));
   pill.classList.add('active');render();
 });
-loadSampleData();
+loadFromNotion();
+function loadFromNotion(){
+  fetch("/api/notion")
+    .then(r=>r.json())
+    .then(data=>{
+      if(data.rows&&data.rows.length){allData=data.rows;buildYearChecks();render();}
+      else{loadSampleData();}
+    })
+    .catch(()=>loadSampleData());
+}
 </script></body></html>
