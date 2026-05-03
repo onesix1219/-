@@ -32,7 +32,8 @@ export default async function handler(req, res) {
         '중간/기말': props['중간/기말']?.select?.name || '',
         '1등급컷': props['1등급컷']?.number || 0,
         '2등급컷': props['2등급컷']?.number || 0,
-        '분석표 링크': props['분석표 링크']?.url || ''
+        '분석지 이미지 링크': props['분석지 이미지 링크']?.url || '',
+        '기출 분석지 원본 링크': props['기출 분석지 원본 링크']?.url || ''
       };
     });
 
