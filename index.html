@@ -726,6 +726,8 @@ function autoLoadViewer(f){
     (f.exam==='전체'||d['중간/기말']===f.exam)
   );
   if(!row) return;
+
+  // 원본 뷰어 자동 로드
   const originalUrl=row['기출 분석지 원본 링크'];
   if(originalUrl){
     const preview=document.getElementById('pdfPreview');
@@ -735,6 +737,25 @@ function autoLoadViewer(f){
     if(driveMatch) viewUrl=`https://drive.google.com/file/d/${driveMatch[1]}/preview`;
     preview.innerHTML=`<iframe src="${viewUrl}" title="기출 분석지 원본" allow="autoplay" style="width:100%;height:100%;border:none;"></iframe>`;
   }
+
+  // 입력 폼 자동 채우기
+  const setVal=(id,v)=>{ const el=document.getElementById(id); if(el) el.value=v||0; };
+  setVal('inp-obj', row['객관식']);
+  setVal('inp-sul', row['서술형']);
+  setVal('inp-dan', row['단답형']);
+  setVal('inp-d1', row['난이도_하']);
+  setVal('inp-d2', row['난이도_중하']);
+  setVal('inp-d3', row['난이도_중']);
+  setVal('inp-d4', row['난이도_중상']);
+  setVal('inp-d5', row['난이도_상']);
+  setVal('inp-d6', row['난이도_최상']);
+  setVal('inp-l1', row['연계_교과서']);
+  setVal('inp-l2', row['연계_학교프린트']);
+  setVal('inp-l3', row['연계_부교재']);
+  setVal('inp-l4', row['연계_비연계']);
+
+  // 차트 자동 업데이트
+  updateCharts();
 }
 
 loadFromNotion();
