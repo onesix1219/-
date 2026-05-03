@@ -33,7 +33,23 @@ export default async function handler(req, res) {
         '1등급컷': props['1등급컷']?.number || 0,
         '2등급컷': props['2등급컷']?.number || 0,
         '분석지 이미지 링크': props['분석지 이미지 링크']?.url || '',
-        '기출 분석지 원본 링크': props['기출 분석지 원본 링크']?.url || ''
+        '기출 분석지 원본 링크': props['기출 분석지 원본 링크']?.url || '',
+        // 문제 유형
+        '객관식': props['객관식']?.number || 0,
+        '서술형': props['서술형']?.number || 0,
+        '단답형': props['단답형']?.number || 0,
+        // 난이도
+        '난이도_하': props['난이도_하']?.number || 0,
+        '난이도_중하': props['난이도_중하']?.number || 0,
+        '난이도_중': props['난이도_중']?.number || 0,
+        '난이도_중상': props['난이도_중상']?.number || 0,
+        '난이도_상': props['난이도_상']?.number || 0,
+        '난이도_최상': props['난이도_최상']?.number || 0,
+        // 연계 출처
+        '연계_교과서': props['연계_교과서']?.number || 0,
+        '연계_학교프린트': props['연계_학교프린트']?.number || 0,
+        '연계_부교재': props['연계_부교재']?.number || 0,
+        '연계_비연계': props['연계_비연계']?.number || 0,
       };
     });
 
