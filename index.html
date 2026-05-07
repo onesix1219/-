@@ -500,10 +500,10 @@ function renderCompare(f){
   const c2=schools.map(s=>{const r=yearData.find(d=>d['학교']===s);return r?r['2등급컷']:null;});
   const condStr=[f.grade!=='전체'?f.grade:'',f.semester!=='전체'?f.semester:'',f.exam!=='전체'?f.exam:''].filter(Boolean).join(' ');
   document.getElementById('compareSubtitle').textContent=`${latestYear}년 기준 · ${condStr}`;
-  const valid1=c1.filter(v=>v!==null),valid2=c2.filter(v=>v!==null);
+  const valid1=c1.filter(v=>v!==null&&v>0),valid2=c2.filter(v=>v!==null&&v>0);
   if(valid1.length){
     const max=Math.max(...valid1),maxIdx=c1.indexOf(max);
-    const min=Math.min(...valid1),minIdx=c1.indexOf(min);
+    const min=Math.min(...valid1),minIdx=c1.findIndex(v=>v===min&&v>0);
     document.getElementById('m-max1').textContent=max+'점';
     document.getElementById('m-max1-school').textContent=schools[maxIdx];
     document.getElementById('m-min1').textContent=min+'점';
