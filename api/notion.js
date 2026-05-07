@@ -30,8 +30,8 @@ export default async function handler(req, res) {
         학년: props['학년']?.select?.name || '',
         학기: props['학기']?.select?.name || '',
         '중간/기말': props['중간/기말']?.select?.name || '',
-        '1등급컷': props['1등급컷']?.number || 0,
-        '2등급컷': props['2등급컷']?.number || 0,
+        '1등급컷': props['1등급컷']?.number ?? null,
+        '2등급컷': props['2등급컷']?.number ?? null,
         '분석지 이미지 링크': props['분석지 이미지 링크']?.url || '',
         '기출 분석지 원본 링크': props['기출 분석지 원본 링크']?.url || '',
         // 문제 유형
